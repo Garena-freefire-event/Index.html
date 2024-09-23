@@ -1,0 +1,330 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+/* Scrolling Text Animation */
+.scrolling-text {
+    width: 100%;
+    overflow: hidden;
+    background-image: url('https://i.postimg.cc/rFLkPXwY/scroll.jpg');
+    white-space: nowrap;
+    height: 40px;
+    z-index: 1;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.scrolling-text span {
+    color: #FFFFFF;
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll 10s linear infinite;
+    font-size: 30px;
+    font-family: 'Anton', sans-serif; /*
+    Updated to Anton */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
+}/* Global Reset */
+body {
+    background-image:none;/* Adjust path as needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff; /* Optional for text visibility */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Import Google Font (Moved to the top) */
+
+/* Menu Icon Styling */
+.menu-container {
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+}
+
+.menu {
+    width: 35px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-container:hover .menu {
+    background-color: #F2AA2B;
+}
+
+/* Main Image Styling */
+.main-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Popup Styling */
+.Fpopup {
+    width: 300px;
+    background-color: #333;
+    color: white;
+    border-radius: 2px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 9999;
+}
+
+.Fpopup h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: 'Anton', sans-serif; 
+}
+
+.Fpopup p {
+    font-size: 15px;
+    margin-bottom: 20px;
+    font-family: 'Anton', sans-serif;
+    color: #FFFFFF;
+}
+
+.Fpopup button {
+    background-color: #FFA500;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: 'Anton', sans-serif;
+}
+
+.Fpopup button:hover {
+    background-color: #ff8c00;
+}
+
+/* Adding a close icon at the top-right */
+.Fclose-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background-image: none;/* Replace 'cancel.png' with your image path */
+    background-size: cover;
+}
+
+/* The overlay */
+.Foverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9998;
+    position: fixed;
+}
+
+/* Faded Wheel Section */
+.faded-wheel {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+    margin-bottom: 10px;
+}
+
+.box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.box img {
+    
+    width: 100%;
+    max-width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid white;
+    box-sizing: border-box;
+}
+
+.middle {
+    position: relative;
+}
+
+.spin-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+    background-image: url('https://i.postimg.cc/NfKh5JVx/Spin-bg.jpg'); /* Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 10%;
+    height: 13vh;
+}
+
+.spin-box img {
+    
+    width: 100px;
+    height: 100%;
+    object-fit: cover;
+    align-items: center;
+    z-index: 999;
+    display: flex;
+    
+}
+
+/* Media query for small screens */
+@media (max-width: 600px) {
+    .faded-wheel {
+        width: 100%;
+    }
+
+    .box img {
+        max-width: 100px;
+        height: 100px;
+    }
+
+    .spin-box img {
+        width: 100px;
+    }
+}
+
+/* Highlight effect for the selected item */
+.highlight {
+    border: 4px solid yellow;
+    transition: border 0.3s ease;
+}
+
+/* Spin animation for the button */
+#spin-box {
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+}
+
+/* Style for active (highlighted) item */
+.item.active {
+    border: 3px solid rgba(255, 0, 0, 1); /* Yellow with 50% opacity */
+}
+
+/* Popup Overlay */
+#popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none;
+}
+
+#popupOverlay.active {
+    display: flex;
+}
+
+/* Popup Box */
+#popup {
+    position: absolute;
+    top: 35%;
+    left: 50px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Popup Title */
+#popup-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #fff;
+    font-family: 'Anton', sans-serif; 
+    gap: 2px;
+}
+
+/* Popup Image */
+#popup-image {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 3px solid #fff;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Buttons */
+#claimBtn, #confirmButton {
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+    border-radius: px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 80%;
+    margin-bottom: 10px;
+    font-family: 'Anton', sans-serif; 
+}
+
+#claimBtn:hover, #confirmButton:hover {
+    background-color: #ff9900;
+    
+}
+
+/* Cancel Icon */
+#cancelIcon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+}
+
+#cancelIcon:hover {
+    color: #ff0000;
+}
